@@ -3,158 +3,253 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Privacy Policy — Nova</title>
+<title>Nova — a beautiful, private new-tab homepage</title>
+<meta name="description" content="Nova replaces your new-tab page with a personal, privacy-first dashboard: clock, weather, tasks, Pomodoro timer, smart search and more — all data stays on your device." />
 <style>
   :root {
     color-scheme: light dark;
     --accent: #6c8cff;
+    --accent2: #ac5eff;
     --text: #1a1d29;
     --muted: #5b6172;
     --border: #e5e7ee;
     --bg: #ffffff;
+    --card: #f6f7fb;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --text: #eef0f6;
       --muted: #a7acbd;
-      --border: #2a2e3d;
-      --bg: #14161f;
+      --border: #262a38;
+      --bg: #0f1117;
+      --card: #171a24;
     }
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.65;
+    line-height: 1.6;
   }
-  main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 56px 24px 96px;
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding-inline: 24px; }
+
+  /* ---- nav ---- */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0;
   }
-  h1 {
-    font-size: 1.9rem;
-    margin: 0 0 4px;
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+  .brand svg { width: 26px; height: 26px; }
+  .nav-links { display: flex; gap: 28px; font-size: 0.92rem; font-weight: 600; }
+  .nav-links a { text-decoration: none; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ---- hero ---- */
+  .hero { text-align: center; padding: 64px 0 56px; }
+  .hero .mark { width: 96px; height: 96px; margin: 0 auto 20px; }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
   }
-  .updated {
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin: 0 0 32px;
+  .hero .grad-text {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  h2 {
-    font-size: 1.15rem;
-    margin: 40px 0 12px;
-    padding-top: 8px;
-    border-top: 1px solid var(--border);
+  .hero p.sub {
+    max-width: 560px; margin: 0 auto 32px;
+    color: var(--muted); font-size: 1.1rem;
   }
-  p { margin: 0 0 14px; }
-  ul { margin: 0 0 14px; padding-inline-start: 22px; }
-  li { margin-bottom: 6px; }
-  code {
-    background: color-mix(in srgb, var(--accent) 12%, transparent);
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 0.9em;
+  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 26px; border-radius: 999px; font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; border: 1px solid transparent; cursor: default;
   }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 8px 0 16px;
-    font-size: 0.92rem;
+  .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
+  .btn-ghost { border-color: var(--border); color: var(--text); }
+  .btn-ghost:hover { background: var(--card); }
+  .btn.patreon { background: #ff424d; color: #fff; cursor: pointer; }
+  .btn.patreon:hover { filter: brightness(1.08); }
+  .status-note { margin-top: 14px; font-size: 0.85rem; color: var(--muted); }
+
+  /* ---- preview card (CSS mockup, not a screenshot — stays accurate) ---- */
+  .preview {
+    margin: 48px auto 0; max-width: 760px;
+    border-radius: 20px; overflow: hidden;
+    background: linear-gradient(135deg, #3457d5 0%, #7b4de0 60%, #ac5eff 100%);
+    box-shadow: 0 30px 80px -20px rgba(90, 70, 200, 0.45);
+    aspect-ratio: 16/9.2; position: relative; padding: 26px;
   }
-  th, td {
-    text-align: left;
-    padding: 8px 10px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
+  .preview-topbar { display: flex; justify-content: space-between; }
+  .pill { background: rgba(255,255,255,.16); border-radius: 12px; padding: 10px 14px; color: #fff; font-size: 0.78rem; }
+  .pill b { display: block; font-size: 1.05rem; }
+  .preview-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; }
+  .preview-center .time { font-size: 2.6rem; font-weight: 700; letter-spacing: -1px; }
+  .preview-center .greet { font-size: 0.95rem; opacity: .92; margin-top: 4px; }
+  .preview-search { margin-top: 16px; background: rgba(255,255,255,.18); border-radius: 999px; width: min(70%, 320px); padding: 10px 16px; font-size: 0.8rem; color: rgba(255,255,255,.85); }
+  .preview-bottom { position: absolute; bottom: 26px; left: 26px; right: 26px; display: flex; justify-content: space-between; gap: 10px; }
+  .card-chip { background: rgba(255,255,255,.14); border-radius: 12px; padding: 10px 12px; color: #fff; font-size: 0.72rem; min-width: 90px; }
+
+  /* ---- features ---- */
+  .section { padding: 72px 0; }
+  .section h2 { font-size: 1.9rem; text-align: center; margin: 0 0 8px; }
+  .section .lead { text-align: center; color: var(--muted); max-width: 540px; margin: 0 auto 44px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+  .feature {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 22px;
   }
-  th { color: var(--muted); font-weight: 600; }
-  a { color: var(--accent); }
-  .badge {
-    display: inline-block;
-    background: color-mix(in srgb, var(--accent) 14%, transparent);
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 0.85rem;
-    padding: 6px 12px;
-    border-radius: 999px;
-    margin-bottom: 24px;
+  .feature .ico { font-size: 1.6rem; margin-bottom: 10px; }
+  .feature h3 { margin: 0 0 6px; font-size: 1rem; }
+  .feature p { margin: 0; color: var(--muted); font-size: 0.88rem; }
+
+  /* ---- privacy strip ---- */
+  .privacy-strip {
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 40px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
   }
+  .privacy-strip .ico-big { font-size: 2.4rem; }
+  .privacy-strip h3 { margin: 0 0 6px; font-size: 1.2rem; }
+  .privacy-strip p { margin: 0; color: var(--muted); max-width: 520px; }
+  .privacy-strip .link-cta { margin-inline-start: auto; white-space: nowrap; }
+
+  /* ---- languages ---- */
+  .lang-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .lang-chip { background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; }
+
+  /* ---- support ---- */
+  .support { text-align: center; }
+
   footer {
-    margin-top: 48px;
-    padding-top: 16px;
     border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 0.85rem;
+    padding: 32px 0; margin-top: 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    color: var(--muted); font-size: 0.85rem;
   }
+  footer a { text-decoration: none; font-weight: 600; color: var(--muted); }
+  footer a:hover { color: var(--text); }
+  .footer-links { display: flex; gap: 20px; }
 </style>
 </head>
 <body>
-<main>
-  <div class="badge">🔒 100% local — no servers, no tracking, no analytics</div>
-  <h1>Privacy Policy — Nova</h1>
-  <p class="updated">Last updated: July 2026</p>
 
-  <p><strong>Nova</strong> (a new-tab homepage extension) was built with a commitment to privacy. This document explains exactly what data is stored and what network requests are made.</p>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="./">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="ng" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#6c8cff"/><stop offset="1" stop-color="#ac5eff"/>
+        </linearGradient></defs>
+        <rect width="100" height="100" rx="24" fill="url(#ng)"/>
+        <path d="M50 18 C50 38 62 50 82 50 C62 50 50 62 50 82 C50 62 38 50 18 50 C38 50 50 38 50 18 Z" fill="#fff"/>
+      </svg>
+      Nova
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="privacy.html">Full policy</a>
+      <a href="https://www.patreon.com/cw/MrIdan">Support</a>
+    </div>
+  </nav>
 
-  <h2>Guiding principle</h2>
-  <p>All of your personal data is stored locally on your own device only, via <code>chrome.storage</code>. We do not run any servers, we do not collect data, and we have no access to any of your information. There is no analytics, no tracking, and no advertising.</p>
+  <section class="hero">
+    <svg class="mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#6c8cff"/><stop offset="1" stop-color="#ac5eff"/>
+      </linearGradient></defs>
+      <path d="M50 10 C50 34 66 50 90 50 C66 50 50 66 50 90 C50 66 34 50 10 50 C34 50 50 34 50 10 Z" fill="url(#hg)"/>
+    </svg>
+    <h1>Your new tab,<br/><span class="grad-text">reimagined.</span></h1>
+    <p class="sub">Nova turns every new tab into a calm, personal dashboard — clock, weather, tasks, focus timer and smart search in one place. No accounts, no tracking, no servers. Just your data, on your device.</p>
+    <div class="cta-row">
+      <span class="btn btn-primary">🧭 Coming soon to the Chrome Web Store</span>
+      <a class="btn patreon" href="https://www.patreon.com/cw/MrIdan">❤️ Support development</a>
+    </div>
+    <p class="status-note">Built by an independent developer, in active development — 8 languages and counting.</p>
 
-  <h2>Data stored locally</h2>
-  <p>Your settings, tasks, notes, links, habits, and preferences are stored in <code>chrome.storage.local</code> on your device. If you enable <strong>sync</strong>, your settings (not the heavier data) are synced through Google's <code>chrome.storage.sync</code> — only between your own browsers, under your own Google account.</p>
+    <div class="preview" aria-hidden="true">
+      <div class="preview-topbar">
+        <div class="pill">☀️ <b>22°C</b> New York</div>
+        <div class="pill">₿ <b>$61,245</b> +2.3%</div>
+      </div>
+      <div class="preview-center">
+        <div class="time">15:32</div>
+        <div class="greet">Good afternoon, Alex</div>
+        <div class="preview-search">🔍 Search, calculate, or !yt for a shortcut…</div>
+      </div>
+      <div class="preview-bottom">
+        <div class="card-chip">✅ Tasks<br/>2/3 done</div>
+        <div class="card-chip">„The harder you work…”<br/>— Proverb</div>
+        <div class="card-chip">🔥 Habits<br/>Read · 5 day streak</div>
+      </div>
+    </div>
+  </section>
 
-  <h2>Network requests</h2>
-  <p>The extension only contacts external services <strong>when needed, for features you've turned on</strong>:</p>
-  <table>
-    <thead>
-      <tr><th>Service</th><th>When it's used</th><th>What's sent</th><th>Their policy</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Open-Meteo</td>
-        <td>Weather widget</td>
-        <td>Coordinates or city name</td>
-        <td><a href="https://open-meteo.com/en/terms">open-meteo.com</a></td>
-      </tr>
-      <tr>
-        <td>CoinGecko</td>
-        <td>Only if the crypto ticker is enabled</td>
-        <td>Coin IDs (no personal data)</td>
-        <td><a href="https://www.coingecko.com/en/privacy">coingecko.com</a></td>
-      </tr>
-      <tr>
-        <td>DuckDuckGo</td>
-        <td>Only if search suggestions are enabled</td>
-        <td>Search text as you type</td>
-        <td><a href="https://duckduckgo.com/privacy">duckduckgo.com</a></td>
-      </tr>
-    </tbody>
-  </table>
-  <p>All requests are encrypted (HTTPS). Every one of these features can be turned off from Settings.</p>
+  <section class="section" id="features">
+    <h2>Everything a new tab should be</h2>
+    <p class="lead">Every widget is optional — build the page that fits your day.</p>
+    <div class="grid">
+      <div class="feature"><div class="ico">🕐</div><h3>Clock &amp; greeting</h3><p>A clean clock, date and a greeting that adapts to the time of day.</p></div>
+      <div class="feature"><div class="ico">🎯</div><h3>Daily focus</h3><p>One question every morning: what matters most today?</p></div>
+      <div class="feature"><div class="ico">🔍</div><h3>Smart search</h3><p>Google, Bing, DuckDuckGo, Brave and more, plus a built-in calculator, unit converter and !bang shortcuts.</p></div>
+      <div class="feature"><div class="ico">🌤️</div><h3>Live weather</h3><p>Current conditions and a 3-day forecast via Open-Meteo — no API key, no account.</p></div>
+      <div class="feature"><div class="ico">✅</div><h3>Tasks &amp; habits</h3><p>Priorities, due dates, and streak tracking for the habits you're building.</p></div>
+      <div class="feature"><div class="ico">🍅</div><h3>Pomodoro timer</h3><p>Configurable focus/break lengths, auto-start, background noise and desktop notifications.</p></div>
+      <div class="feature"><div class="ico">💹</div><h3>Crypto &amp; world clocks</h3><p>Live prices and multiple time zones at a glance, entirely optional.</p></div>
+      <div class="feature"><div class="ico">🎨</div><h3>Deep customization</h3><p>Themes, gradients, your own photo, blur &amp; dim controls, accent colors and fonts.</p></div>
+      <div class="feature"><div class="ico">🌍</div><h3>8 languages</h3><p>English, Hebrew, French, Spanish, German, Russian, Arabic and Portuguese — with full RTL support.</p></div>
+    </div>
+  </section>
 
-  <h2>Permissions and how they're used</h2>
-  <ul>
-    <li><code>storage</code> — store your settings and data locally.</li>
-    <li><code>geolocation</code> — location for the weather widget (you can enter a city manually instead).</li>
-    <li><code>favicon</code> — display site icons locally, with no external request.</li>
-  </ul>
-  <p><strong>Optional permissions</strong> (requested only when you turn the feature on, not at install time):</p>
-  <ul>
-    <li><code>topSites</code> — suggest quick links from your most-visited sites (read locally only).</li>
-    <li><code>bookmarks</code> — show bookmarks in the quick-access panel (read locally only).</li>
-    <li><code>sessions</code> — show recently closed tabs (read locally only).</li>
-  </ul>
-  <p>Data read from <code>topSites</code>/<code>bookmarks</code>/<code>sessions</code> is <strong>never transmitted anywhere</strong> — it is used only to display it on the page.</p>
+  <section class="section" id="privacy">
+    <div class="privacy-strip">
+      <div class="ico-big">🔒</div>
+      <div>
+        <h3>Everything stays on your device</h3>
+        <p>No servers, no accounts, no analytics, no tracking. Settings and data live in your browser's local storage — optionally synced through your own Google account, never through ours.</p>
+      </div>
+      <a class="btn btn-ghost link-cta" href="privacy.html">Read the full policy →</a>
+    </div>
+  </section>
 
-  <h2>Security</h2>
-  <p>The extension uses a strict Content Security Policy (<code>script-src 'self'</code>), runs no dynamic code (no <code>eval</code>), and is protected against XSS and prototype pollution.</p>
+  <section class="section">
+    <h2>Speaks your language</h2>
+    <p class="lead">The interface auto-detects your browser's language on first run.</p>
+    <div class="lang-row">
+      <span class="lang-chip">English</span>
+      <span class="lang-chip">עברית</span>
+      <span class="lang-chip">Français</span>
+      <span class="lang-chip">Español</span>
+      <span class="lang-chip">Deutsch</span>
+      <span class="lang-chip">Русский</span>
+      <span class="lang-chip">العربية</span>
+      <span class="lang-chip">Português</span>
+    </div>
+  </section>
 
-  <h2>Contact</h2>
-  <p>For privacy questions, please <a href="https://github.com/DrummingBird1/nova-privacy/issues">open an issue in this repository</a>.</p>
+  <section class="section support">
+    <h2>Support the project</h2>
+    <p class="lead">Nova is free, ad-free and built independently. If it earns a spot on your new tab, consider backing its development.</p>
+    <a class="btn patreon" href="https://www.patreon.com/cw/MrIdan">❤️ Become a patron</a>
+  </section>
 
-  <footer>Nova — a modern, privacy-first new-tab homepage.</footer>
-</main>
+  <footer>
+    <div>© 2026 Nova. All data stays on your device.</div>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy policy</a>
+      <a href="https://github.com/DrummingBird1/nova-privacy/issues">Contact</a>
+      <a href="https://www.patreon.com/cw/MrIdan">Patreon</a>
+    </div>
+  </footer>
+</div>
+
 </body>
 </html>

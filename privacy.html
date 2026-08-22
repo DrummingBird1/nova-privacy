@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — Nova</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --accent: #6c8cff;
+    --text: #1a1d29;
+    --muted: #5b6172;
+    --border: #e5e7ee;
+    --bg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #eef0f6;
+      --muted: #a7acbd;
+      --border: #2a2e3d;
+      --bg: #14161f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+  h1 {
+    font-size: 1.9rem;
+    margin: 0 0 4px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0 0 32px;
+  }
+  h2 {
+    font-size: 1.15rem;
+    margin: 40px 0 12px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+  p { margin: 0 0 14px; }
+  ul { margin: 0 0 14px; padding-inline-start: 22px; }
+  li { margin-bottom: 6px; }
+  code {
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 16px;
+    font-size: 0.92rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--accent); }
+  .badge {
+    display: inline-block;
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 28px;
+  }
+</style>
+</head>
+<body>
+<main>
+  <a class="back-link" href="./">← Nova</a>
+  <div class="badge">🔒 100% local — no servers, no tracking, no analytics</div>
+  <h1>Privacy Policy — Nova</h1>
+  <p class="updated">Last updated: August 2026</p>
+
+  <p><strong>Nova</strong> (a new-tab homepage extension) was built with a commitment to privacy. This document explains exactly what data is stored and what network requests are made.</p>
+
+  <h2>Guiding principle</h2>
+  <p>All of your personal data is stored locally on your own device only, via <code>chrome.storage</code>. We do not run any servers, we do not collect data, and we have no access to any of your information. There is no analytics, no tracking, and no advertising.</p>
+
+  <h2>Data stored locally</h2>
+  <p>Your settings, tasks, notes, links, habits, and preferences are stored in <code>chrome.storage.local</code> on your device. If you enable <strong>sync</strong>, your settings (not the heavier data) are synced through Google's <code>chrome.storage.sync</code> — only between your own browsers, under your own Google account.</p>
+
+  <h2>Network requests</h2>
+  <p>The extension only contacts external services <strong>when needed, for features you've turned on</strong>:</p>
+  <table>
+    <thead>
+      <tr><th>Service</th><th>When it's used</th><th>What's sent</th><th>Their policy</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Open-Meteo</td>
+        <td>Weather widget</td>
+        <td>Coordinates or city name</td>
+        <td><a href="https://open-meteo.com/en/terms">open-meteo.com</a></td>
+      </tr>
+      <tr>
+        <td>CoinGecko</td>
+        <td>Only if the crypto ticker is enabled</td>
+        <td>Coin IDs (no personal data)</td>
+        <td><a href="https://www.coingecko.com/en/privacy">coingecko.com</a></td>
+      </tr>
+      <tr>
+        <td>DuckDuckGo</td>
+        <td>Only if search suggestions are enabled</td>
+        <td>Search text as you type</td>
+        <td><a href="https://duckduckgo.com/privacy">duckduckgo.com</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>All requests are encrypted (HTTPS). Every one of these features can be turned off from Settings.</p>
+
+  <h2>Permissions and how they're used</h2>
+  <ul>
+    <li><code>storage</code> — store your settings and data locally.</li>
+    <li><code>geolocation</code> — location for the weather widget (you can enter a city manually instead).</li>
+    <li><code>favicon</code> — display site icons locally, with no external request.</li>
+  </ul>
+  <p><strong>Optional permissions</strong> (requested only when you turn the feature on, not at install time):</p>
+  <ul>
+    <li><code>topSites</code> — suggest quick links from your most-visited sites (read locally only).</li>
+    <li><code>bookmarks</code> — show bookmarks in the quick-access panel (read locally only).</li>
+    <li><code>sessions</code> — show recently closed tabs (read locally only).</li>
+  </ul>
+  <p>Data read from <code>topSites</code>/<code>bookmarks</code>/<code>sessions</code> is <strong>never transmitted anywhere</strong> — it is used only to display it on the page.</p>
+
+  <h2>Security</h2>
+  <p>The extension uses a strict Content Security Policy (<code>script-src 'self'</code>), runs no dynamic code (no <code>eval</code>), and is protected against XSS and prototype pollution.</p>
+
+  <h2>Contact</h2>
+  <p>For privacy questions, please <a href="https://github.com/DrummingBird1/nova-privacy/issues">open an issue in this repository</a>.</p>
+
+  <footer>Nova — a modern, privacy-first new-tab homepage.</footer>
+</main>
+</body>
+</html>
