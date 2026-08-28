@@ -73,8 +73,11 @@
   .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
   .btn-ghost { border-color: var(--border); color: var(--text); }
   .btn-ghost:hover { background: var(--card); }
-  .btn.patreon { background: #ff424d; color: #fff; cursor: pointer; }
-  .btn.patreon:hover { filter: brightness(1.08); }
+  .btn.patreon, .btn.kofi, .btn.buymeacoffee { color: #fff; cursor: pointer; }
+  .btn.patreon:hover, .btn.kofi:hover, .btn.buymeacoffee:hover { filter: brightness(1.08); }
+  .btn.patreon { background: #ff424d; }
+  .btn.kofi { background: #ff5e5b; }
+  .btn.buymeacoffee { background: #ffdd00; color: #15181f; }
   .status-note { margin-top: 14px; font-size: 0.85rem; color: var(--muted); }
 
   /* ---- preview card (CSS mockup, not a screenshot — stays accurate) ---- */
@@ -156,7 +159,7 @@
       <a href="#features">Features</a>
       <a href="#privacy">Privacy</a>
       <a href="privacy.html">Full policy</a>
-      <a href="https://www.patreon.com/cw/MrIdan">Support</a>
+      <a href="#support">Support</a>
     </div>
   </nav>
 
@@ -171,7 +174,7 @@
     <p class="sub">Nova turns every new tab into a calm, personal dashboard — clock, weather, tasks, focus timer and smart search in one place. No accounts, no tracking, no servers. Just your data, on your device.</p>
     <div class="cta-row">
       <span class="btn btn-primary">🧭 Coming soon to the Chrome Web Store</span>
-      <a class="btn patreon" href="https://www.patreon.com/cw/MrIdan">❤️ Support development</a>
+      <a class="btn patreon" href="#support">❤️ Support development</a>
     </div>
     <p class="status-note">Built by an independent developer, in active development — 8 languages and counting.</p>
 
@@ -235,10 +238,14 @@
     </div>
   </section>
 
-  <section class="section support">
+  <section class="section support" id="support">
     <h2>Support the project</h2>
     <p class="lead">Nova is free, ad-free and built independently. If it earns a spot on your new tab, consider backing its development.</p>
-    <a class="btn patreon" href="https://www.patreon.com/cw/MrIdan">❤️ Become a patron</a>
+    <div class="cta-row">
+      <a class="btn patreon" href="https://www.patreon.com/c/IdanLights">❤️ Become a patron</a>
+      <a class="btn kofi" href="https://ko-fi.com/idanlights">☕ Support on Ko-fi</a>
+      <a class="btn buymeacoffee" href="https://buymeacoffee.com/MrIdan">☕ Buy me a coffee</a>
+    </div>
   </section>
 
   <footer>
@@ -246,7 +253,7 @@
     <div class="footer-links">
       <a href="privacy.html">Privacy policy</a>
       <a href="https://github.com/DrummingBird1/nova-privacy/issues">Contact</a>
-      <a href="https://www.patreon.com/cw/MrIdan">Patreon</a>
+      <a href="#support">Support</a>
     </div>
   </footer>
 </div>
