@@ -25,15 +25,15 @@ This repository hosts the project's public-facing site (this README, the [landin
 
 - 🕐 **Clock & greeting** — 12/24-hour, with a personal greeting by time of day
 - 🎯 **Daily focus** — one main goal for today, resets each morning
-- 🔍 **Smart search** — Google / Bing / DuckDuckGo / Brave / a custom engine, autocomplete, an inline calculator and unit converter (`12*30`, `5 km to miles`), and `!bang` shortcuts
-- 🌤️ **Live weather** — via Open-Meteo, by location or city, with a 3-day forecast
-- ✅ **Tasks** — priorities, due dates, subtasks, recurring tasks, drag to reorder
-- 🔥 **Habit tracking** — daily streaks with a 7-day history view
-- 🍅 **Pomodoro timer** — configurable focus/break lengths, background sounds, real background notifications
+- 🔍 **Smart search** — Google / Bing / DuckDuckGo / Brave / a custom engine, autocomplete, an inline calculator, unit converter, and currency conversion (`12*30`, `5 km to miles`, `100 usd to eur`), and `!bang` shortcuts
+- 🌤️ **Live weather** — via Open-Meteo, by location or city, with a 3-day forecast; backgrounds can react to it too (rain/snow/storm)
+- ✅ **Tasks** — priorities, due dates, subtasks, recurring tasks, drag to reorder, undo on delete
+- 🔥 **Habit tracking** — daily streaks, a 7-day history view, and optional daily reminders
+- 🍅 **Pomodoro timer** — configurable focus/break lengths, background sounds, real background notifications, weekly stats
 - 📝 **Notes** — multiple notes with Markdown support
 - 💹 **Crypto ticker**, 🌍 **world clocks**, ⏳ **countdowns**, ⚡ **quick access** to bookmarks and recent tabs
 - 🎨 **Deep customization** — theme presets with live preview, gradients, Unsplash photos, your own uploaded image, accent colors, compact mode, zen mode
-- ⌨️ **Command palette** (`Ctrl/Cmd+K`) for fast navigation
+- ⌨️ **Command palette** (`Ctrl/Cmd+K`) for fast navigation, and every keyboard shortcut can be rebound in Settings
 - 🌍 **13 languages** with full RTL support: English, Hebrew, French, Spanish, German, Russian, Arabic, Portuguese, Japanese, Korean, Chinese, Hindi, Italian
 - 🔒 **100% local** — settings sync only through your own `chrome.storage.sync`; nothing is ever sent to a Nova server, because there isn't one
 
