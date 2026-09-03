@@ -27,11 +27,12 @@ This repository hosts the project's public-facing site (this README, the [landin
 - 🎯 **Daily focus** — one main goal for today, resets each morning
 - 🔍 **Smart search** — Google / Bing / DuckDuckGo / Brave / a custom engine, autocomplete, an inline calculator, unit converter, currency conversion, and time-zone lookup (`12*30`, `5 km to miles`, `100 usd to eur`, `time in Tokyo`), smart reminders that create a task (`remind me tomorrow at 9 to call Dan`), and `!bang` shortcuts
 - 🌤️ **Live weather** — via Open-Meteo, by location or city, with UV index, a rain hint, and a 3-day forecast; backgrounds can react to it too (rain/snow/storm)
-- ✅ **Tasks** — priorities, due dates, subtasks, recurring tasks, drag to reorder, undo on delete
-- 🔥 **Habit tracking** — daily streaks, a 7-day history view, and optional daily reminders
-- 🍅 **Pomodoro timer** — configurable focus/break lengths, background sounds, real background notifications, weekly stats
-- 📝 **Notes** — multiple notes with Markdown support and a live word count
-- ⏱️ **Timer & stopwatch**, 🙂 **daily mood tracker**, 💧 **water intake**, 📰 **RSS/Atom news**, 📅 **upcoming calendar events** (`.ics`), 🗓️ **on this day in history**, 💹 **stocks & crypto tickers**, 🌍 **world clocks**, ⏳ **countdowns**, ⚡ **quick access** to bookmarks and recent tabs
+- ✅ **Tasks** — priorities, due dates, subtasks, recurring tasks, **#tags with filtering**, **reminder notifications**, drag to reorder, undo on delete, **linked Pomodoro sessions**
+- 🔥 **Habit tracking** — daily streaks, **achievement badges**, an expandable **70-day heatmap**, **negative habits** (`!avoid`), and optional daily reminders
+- 🍅 **Pomodoro timer** — configurable focus/break lengths, **ready-made presets** (classic/deep work/90-min), **task linking**, background sounds, real background notifications, weekly stats
+- 📝 **Notes** — multiple notes with Markdown support, an **interactive checklist**, a live word count, and **PIN-lock** for privacy
+- ⏱️ **Timer & stopwatch**, 🙂 **daily mood tracker**, 💧 **water intake**, 📰 **RSS/Atom news**, 📅 **upcoming calendar events** (`.ics`), 🗓️ **on this day in history**, 💹 **stocks & crypto tickers** (with **sparklines and price alerts**), 🌍 **world clocks**, ⏳ **countdowns**, ⚡ **quick access** to bookmarks and recent tabs
+- 🔗 **Quick links with folders**, and **search across your open tabs**
 - 🎨 **Deep customization** — theme presets with live preview, gradients, Unsplash photos, your own uploaded image, accent colors (including auto-detected from your background), compact mode, zen mode
 - ⌨️ **Command palette** (`Ctrl/Cmd+K`) for fast navigation, and every keyboard shortcut can be rebound in Settings
 - 🌍 **13 languages** with full RTL support: English, Hebrew, French, Spanish, German, Russian, Arabic, Portuguese, Japanese, Korean, Chinese, Hindi, Italian
