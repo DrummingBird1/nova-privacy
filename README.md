@@ -33,7 +33,9 @@ This repository hosts the project's public-facing site (this README, the [landin
 - 📝 **Notes** — multiple notes with Markdown support, an **interactive checklist**, a live word count, and **PIN-lock** for privacy
 - ⏱️ **Timer & stopwatch**, 🙂 **daily mood tracker**, 💧 **water intake**, 📰 **RSS/Atom news**, 📅 **upcoming calendar events** (`.ics`), 🗓️ **on this day in history**, 💹 **stocks & crypto tickers** (with **sparklines and price alerts**), 🌍 **world clocks**, ⏳ **countdowns**, ⚡ **quick access** to bookmarks and recent tabs
 - 🔗 **Quick links with folders**, and **search across your open tabs**
-- 🎨 **Deep customization** — theme presets with live preview, gradients, Unsplash photos, your own uploaded image, accent colors (including auto-detected from your background), compact mode, zen mode
+- 🎨 **Deep customization** — 10 theme presets with live preview (including minimal/neon/retro/glass), a **custom font** from Google Fonts, gradients, a **live animated wallpaper**, Unsplash photos, your own uploaded image, accent colors (including auto-detected from your background), a weekend color variant, **widgets-only mode** (hides the background entirely), compact mode, zen mode
+- ♿ **Accessibility** — a high-contrast mode, global text size, and a **free-form layout editor** with keyboard support (Alt+Arrow keys), not just drag-and-drop
+- 🏆 **Progress (optional)** — XP and levels, 10 achievements, a rotating daily challenge
 - ⌨️ **Command palette** (`Ctrl/Cmd+K`) for fast navigation, and every keyboard shortcut can be rebound in Settings
 - 🌍 **13 languages** with full RTL support: English, Hebrew, French, Spanish, German, Russian, Arabic, Portuguese, Japanese, Korean, Chinese, Hindi, Italian
 - 🔒 **100% local** — settings sync only through your own `chrome.storage.sync`; nothing is ever sent to a Nova server, because there isn't one
