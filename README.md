@@ -17,7 +17,7 @@ No accounts, no tracking, no servers — just your data, on your device.
 
 ## What is Nova Homepage?
 
-Nova replaces Chrome's new-tab page with a calm, personal dashboard: a clock, the weather, your tasks, a Pomodoro timer, and a smart search bar, all in one place. Every widget is optional, every color and background is customizable, and the whole thing works in 13 languages with full right-to-left support.
+Nova replaces Chrome's new-tab page with a calm, personal dashboard: a clock, the weather, your tasks, a Pomodoro timer, and a smart search bar, all in one place. Every widget is optional, every color and background is customizable, and the whole thing works in 18 languages with full right-to-left support.
 
 This repository hosts the project's public-facing site (this README, the [landing page](https://drummingbird1.github.io/nova-privacy/), and the [privacy policy](https://drummingbird1.github.io/nova-privacy/privacy.html)) via GitHub Pages. It does not contain the extension's source code.
 
@@ -33,11 +33,14 @@ This repository hosts the project's public-facing site (this README, the [landin
 - 📝 **Notes** — multiple notes with Markdown support, an **interactive checklist**, a live word count, and **PIN-lock** for privacy
 - ⏱️ **Timer & stopwatch**, 🙂 **daily mood tracker**, 💧 **water intake**, 📰 **RSS/Atom news**, 📅 **upcoming calendar events** (`.ics`), 🗓️ **on this day in history**, 💹 **stocks & crypto tickers** (with **sparklines and price alerts**), 🌍 **world clocks**, ⏳ **countdowns**, ⚡ **quick access** to bookmarks and recent tabs
 - 🔗 **Quick links with folders**, and **search across your open tabs**
-- 🎨 **Deep customization** — 10 theme presets with live preview (including minimal/neon/retro/glass), a **custom font** from Google Fonts, gradients, a **live animated wallpaper**, Unsplash photos, your own uploaded image, accent colors (including auto-detected from your background), a weekend color variant, **widgets-only mode** (hides the background entirely), compact mode, zen mode
+- 🎨 **Deep customization** — 10 theme presets with live preview (including minimal/neon/retro/glass), a **custom font** from Google Fonts, gradients, a **live animated wallpaper**, Unsplash photos, your own uploaded image, accent colors (including auto-detected from your background), a weekend color variant, **widgets-only mode** (hides the background entirely), compact mode, zen mode, an **alternate calendar** in the clock (Hebrew/Islamic/Chinese)
 - ♿ **Accessibility** — a high-contrast mode, global text size, and a **free-form layout editor** with keyboard support (Alt+Arrow keys), not just drag-and-drop
 - 🏆 **Progress (optional)** — XP and levels, 10 achievements, a rotating daily challenge
 - ⌨️ **Command palette** (`Ctrl/Cmd+K`) for fast navigation, and every keyboard shortcut can be rebound in Settings
-- 🌍 **13 languages** with full RTL support: English, Hebrew, French, Spanish, German, Russian, Arabic, Portuguese, Japanese, Korean, Chinese, Hindi, Italian
+- 🔒 **Privacy & security** — a **whole-screen PIN lock**, a one-click **guest mode** that hides personal widgets, and a **password-protected encrypted backup** (AES-256-GCM, entirely local)
+- 💾 **Backup, sync & sharing** — a compact **copy/paste transfer code** between devices, **named profiles** to switch setups (e.g. Work/Personal), and a **shareable day-summary image** (PNG)
+- ⚡ **Performance** — optional widgets (crypto/stocks/RSS/calendar/on-this-day) are **lazy-loaded** only when turned on, plus a **battery saver** mode
+- 🌍 **18 languages** with full RTL support: English, Hebrew, French, Spanish, German, Russian, Arabic, Portuguese, Japanese, Korean, Chinese, Hindi, Italian, Dutch, Polish, Turkish, Thai, Vietnamese
 - 🔒 **100% local** — settings sync only through your own `chrome.storage.sync`; nothing is ever sent to a Nova server, because there isn't one
 
 ## Install
