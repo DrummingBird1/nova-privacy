@@ -57,7 +57,7 @@ Nova מחליף את עמוד הטאב החדש של Chrome בדשבורד אי�
 
 ## התקנה
 
-Nova Homepage עדיין לא בחנות האינטרנט של Chrome — הוא בפיתוח פעיל. בדקו את [האתר החי](https://drummingbird1.github.io/nova-privacy/) למצב העדכני.
+Nova Homepage זמין ב[חנות האינטרנט של Chrome](https://chromewebstore.google.com/detail/nova-%E2%80%94-my-homepage/imkkbleomhifdfgbnipinlbpmcemfbdp). ב[אתר החי](https://drummingbird1.github.io/nova-privacy/) יש פרטים נוספים, ובעמוד ה-[Releases](https://github.com/DrummingBird1/nova-privacy/releases) הערות לכל גרסה.
 
 ## פרטיות
 

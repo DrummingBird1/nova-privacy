@@ -55,7 +55,7 @@ This repository hosts the project's public-facing site (this README, the [landin
 
 ## Install
 
-Nova Homepage isn't on the Chrome Web Store yet — it's in active development. Check the [live site](https://drummingbird1.github.io/nova-privacy/) for the current status.
+Nova Homepage is available on the [Chrome Web Store](https://chromewebstore.google.com/detail/nova-%E2%80%94-my-homepage/imkkbleomhifdfgbnipinlbpmcemfbdp). The [live site](https://drummingbird1.github.io/nova-privacy/) has more details, and the notes for every version are on the [Releases](https://github.com/DrummingBird1/nova-privacy/releases) page.
 
 ## Privacy
 
