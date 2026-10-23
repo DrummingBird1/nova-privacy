@@ -105,15 +105,26 @@
   <a class="back-link" href="./">← Nova</a>
   <div class="badge">🔒 100% local — no servers, no tracking, no analytics</div>
   <h1>Privacy Policy — Nova</h1>
-  <p class="updated">Last updated: August 2026</p>
+  <p class="updated">Last updated: October 2026 (Nova 3.0.0)</p>
 
-  <p><strong>Nova</strong> (a new-tab homepage extension) was built with a commitment to privacy. This document explains exactly what data is stored and what network requests are made.</p>
+  <p><strong>Nova</strong> (a new-tab homepage extension) was built with a commitment to privacy. This document explains exactly what data is stored, what network requests are made, and which permissions the extension asks for.</p>
 
   <h2>Guiding principle</h2>
-  <p>All of your personal data is stored locally on your own device only, via <code>chrome.storage</code>. We do not run any servers, we do not collect data, and we have no access to any of your information. There is no analytics, no tracking, and no advertising.</p>
+  <p>All of your personal data is stored locally on your own device only, via <code>chrome.storage</code>, IndexedDB and the backup files you choose to create. We do not run any servers, we do not collect data, and we have no access to any of your information. There is no analytics, no tracking, and no advertising.</p>
 
   <h2>Data stored locally</h2>
-  <p>Your settings, tasks, notes, links, habits, and preferences are stored in <code>chrome.storage.local</code> on your device. If you enable <strong>sync</strong>, your settings (not the heavier data) are synced through Google's <code>chrome.storage.sync</code> — only between your own browsers, under your own Google account.</p>
+  <p>Your settings, tasks (including projects, tags and status), notes, links, habits, mood and water entries, your <strong>personal journal and goals</strong>, the statistics history behind the productivity hub, saved themes, profiles and preferences are stored in <code>chrome.storage.local</code> on your device. A background image you upload from your computer is stored in the extension's IndexedDB.</p>
+  <p>If you enable <strong>sync</strong> (off by default), <strong>your settings only</strong> are synced through Google's <code>chrome.storage.sync</code> — between your own browsers, under your own Google account. Tasks, notes, journal, goals and the rest of your data are not synced.</p>
+  <p>A PIN lock (for the whole screen or for a single note) stores a hash (SHA-256) of the code on your device. It is privacy against a casual glance, <strong>not encryption</strong>: the text itself is stored as usual.</p>
+
+  <h2>Backups</h2>
+  <ul>
+    <li><strong>Manual export</strong> — a JSON file that you save yourself. You can protect it with a password (AES-256-GCM, entirely local). The copy/paste <strong>transfer code</strong> and the shareable day-summary image are also created locally. None of this is sent to us.</li>
+    <li><strong>Automatic folder backup</strong> (optional, new in 3.0) — you pick a folder in the browser's folder picker. Nova saves one file per day, <code>nova-backup-YYYY-MM-DD.json</code>, keeps the latest 7, and does not touch any other file. <strong>These files are not encrypted</strong> and contain your data (tasks, notes, journal, settings), so choose a private folder. If that folder is synced by a cloud service you use (Google Drive, Dropbox, …), that service uploads it; Nova itself uploads nothing. The folder reference is kept in the browser (IndexedDB). Chrome may ask you to allow access again after a restart. You can stop the backup at any time in Settings, and the extension forgets the folder.</li>
+  </ul>
+
+  <h2>On-device AI (optional, new in 3.0)</h2>
+  <p>Nova can use Chrome's built-in AI (the Prompt API and the Summarizer) to polish the daily briefing, summarize a note and add a task from free text. These models run <strong>on your device, inside Chrome</strong>. The text you process (the task you typed, the note, or the briefing built from your tasks and events) goes only to your own browser — <strong>not to a Nova server and not to any other server on our behalf</strong>. Nova does not download a model by itself: Chrome does, only after you explicitly click a download button in Settings, and that download is governed by Google's and Chrome's own policies. You can turn these features off in Settings. The "smart add" (detecting dates and priorities in text) is plain local code with no AI.</p>
 
   <h2>Network requests</h2>
   <p>The extension only contacts external services <strong>when needed, for features you've turned on</strong>:</p>
@@ -140,26 +151,66 @@
         <td>Search text as you type</td>
         <td><a href="https://duckduckgo.com/privacy">duckduckgo.com</a></td>
       </tr>
+      <tr>
+        <td>Frankfurter (<code>api.frankfurter.app</code>)</td>
+        <td>Only if currency conversion in search is enabled</td>
+        <td>The two currency codes (for example USD and EUR), no amounts</td>
+        <td><a href="https://www.frankfurter.app/">frankfurter.app</a></td>
+      </tr>
+      <tr>
+        <td>Stooq</td>
+        <td>Only if the stocks widget is enabled</td>
+        <td>The ticker symbols you entered</td>
+        <td><a href="https://stooq.com/">stooq.com</a></td>
+      </tr>
+      <tr>
+        <td>Wikipedia (<code>en.wikipedia.org</code>)</td>
+        <td>Only if "On this day" is enabled</td>
+        <td>The current month and day</td>
+        <td><a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy">wikimedia.org</a></td>
+      </tr>
+      <tr>
+        <td>Picsum (<code>picsum.photos</code>)</td>
+        <td>Only if you choose the "photo of the day" background</td>
+        <td>A daily image identifier</td>
+        <td><a href="https://picsum.photos/">picsum.photos</a></td>
+      </tr>
+      <tr>
+        <td>Google Fonts</td>
+        <td>Only if you choose a custom font</td>
+        <td>The font name you entered</td>
+        <td><a href="https://policies.google.com/privacy">policies.google.com</a></td>
+      </tr>
+      <tr>
+        <td>Addresses you enter yourself</td>
+        <td>News (RSS/Atom), upcoming calendar (<code>.ics</code>), or a background image from a URL</td>
+        <td>An ordinary request to that address, sent directly from your browser</td>
+        <td>Up to the owner of that address</td>
+      </tr>
     </tbody>
   </table>
-  <p>All requests are encrypted (HTTPS). Every one of these features can be turned off from Settings.</p>
+  <p>All requests are encrypted (HTTPS) and sent directly from your browser, never through us. As with any network request, the service sees your IP address and ordinary browser details. Every one of these features can be turned off from Settings.</p>
 
   <h2>Permissions and how they're used</h2>
   <ul>
     <li><code>storage</code> — store your settings and data locally.</li>
     <li><code>geolocation</code> — location for the weather widget (you can enter a city manually instead).</li>
     <li><code>favicon</code> — display site icons locally, with no external request.</li>
+    <li><code>alarms</code> — local background alerts: the end of a Pomodoro session, and reminders for habits and tasks that you gave a reminder time. No other use.</li>
   </ul>
   <p><strong>Optional permissions</strong> (requested only when you turn the feature on, not at install time):</p>
   <ul>
     <li><code>topSites</code> — suggest quick links from your most-visited sites (read locally only).</li>
     <li><code>bookmarks</code> — show bookmarks in the quick-access panel (read locally only).</li>
     <li><code>sessions</code> — show recently closed tabs (read locally only).</li>
+    <li><code>tabs</code> — search across your open tabs: titles and addresses are read locally to show matches and to switch to the tab you pick.</li>
+    <li><code>notifications</code> — system notifications for a finished Pomodoro and for the reminders you set.</li>
+    <li>Access to <code>api.coingecko.com</code>, <code>api.frankfurter.app</code>, <code>stooq.com</code> and <code>en.wikipedia.org</code> — requested only when you turn on the matching feature in the table above.</li>
   </ul>
-  <p>Data read from <code>topSites</code>/<code>bookmarks</code>/<code>sessions</code> is <strong>never transmitted anywhere</strong> — it is used only to display it on the page.</p>
+  <p>Data read from <code>topSites</code>/<code>bookmarks</code>/<code>sessions</code>/<code>tabs</code> is <strong>never transmitted anywhere</strong> — it is used only to display it on the page.</p>
 
   <h2>Security</h2>
-  <p>The extension uses a strict Content Security Policy (<code>script-src 'self'</code>), runs no dynamic code (no <code>eval</code>), and is protected against XSS and prototype pollution.</p>
+  <p>The extension uses a strict Content Security Policy (<code>script-src 'self'</code>), runs no dynamic code (no <code>eval</code>), and is protected against XSS and prototype pollution. Content that comes from AI or from an outside address is treated as untrusted input: AI output is validated and cleaned, and text from outside addresses (news, calendar) is shown as plain text only.</p>
 
   <h2>Contact</h2>
   <p>For privacy questions, please <a href="https://github.com/DrummingBird1/nova-privacy/issues">open an issue in this repository</a>.</p>
