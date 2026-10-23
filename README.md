@@ -43,7 +43,7 @@ This repository hosts the project's public-facing site (this README, the [landin
 - 📝 **Notes** — multiple notes with Markdown support, an **interactive checklist**, a live word count, and **PIN-lock** for privacy
 - ⏱️ **Timer & stopwatch**, 🙂 **daily mood tracker**, 💧 **water intake**, 📰 **RSS/Atom news**, 📅 **upcoming calendar events** (`.ics`), 🗓️ **on this day in history**, 💹 **stocks & crypto tickers** (with **sparklines and price alerts**), 🌍 **world clocks**, ⏳ **countdowns**, ⚡ **quick access** to bookmarks and recent tabs
 - 🔗 **Quick links with folders**, and **search across your open tabs**
-- 🎨 **Deep customization** — 10 theme presets with live preview (including minimal/neon/retro/glass), a **custom font** from Google Fonts, gradients, a **live animated wallpaper**, Unsplash photos, your own uploaded image, accent colors (including auto-detected from your background), a weekend color variant, **widgets-only mode** (hides the background entirely), compact mode, zen mode, an **alternate calendar** in the clock (Hebrew/Islamic/Chinese)
+- 🎨 **Deep customization** — 10 theme presets with live preview (including minimal/neon/retro/glass), a **custom font** from Google Fonts, gradients, a **live animated wallpaper**, a photo-of-the-day background, your own uploaded image, accent colors (including auto-detected from your background), a weekend color variant, **widgets-only mode** (hides the background entirely), compact mode, zen mode, an **alternate calendar** in the clock (Hebrew/Islamic/Chinese)
 - ♿ **Accessibility** — a high-contrast mode, global text size, and a **free-form layout editor** with keyboard support (Alt+Arrow keys), not just drag-and-drop
 - 🏆 **Progress (optional)** — XP and levels, 10 achievements, a rotating daily challenge
 - ⌨️ **Command palette** (`Ctrl/Cmd+K`) for fast navigation, and every keyboard shortcut can be rebound in Settings
@@ -59,7 +59,7 @@ Nova Homepage isn't on the Chrome Web Store yet — it's in active development. 
 
 ## Privacy
 
-All your data — settings, tasks, notes, habits — stays on your device (`chrome.storage`) or syncs only through your own Google account via Chrome's built-in sync. Nova has no backend and no analytics. Weather, crypto prices, and background photos are fetched directly from their providers (Open-Meteo, CoinGecko, Unsplash) only when those features are turned on. Full details: [privacy policy](https://drummingbird1.github.io/nova-privacy/privacy.html).
+All your data — settings, tasks, notes, habits — stays on your device (`chrome.storage`) or syncs only through your own Google account via Chrome's built-in sync. Nova has no backend and no analytics. Weather, crypto prices, and background photos are fetched directly from their providers (Open-Meteo, CoinGecko, Picsum) only when those features are turned on. Full details: [privacy policy](https://drummingbird1.github.io/nova-privacy/privacy.html).
 
 ## Version history
 
