@@ -9,6 +9,8 @@
 
 [האתר החי](https://drummingbird1.github.io/nova-privacy/) · [מדיניות פרטיות](https://drummingbird1.github.io/nova-privacy/privacy.html) · [גרסאות (Releases)](https://github.com/DrummingBird1/nova-privacy/releases) · [תמיכה בפרויקט](#תמיכה)
 
+🗺️ [מפת דרכים (Roadmap)](ROADMAP.md)
+
 🌐 **קרא/י בשפה אחרת:** [English](README.md)
 
 </div>

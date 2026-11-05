@@ -9,6 +9,8 @@ No accounts, no tracking, no servers — just your data, on your device.
 
 [Live site](https://drummingbird1.github.io/nova-privacy/) · [Privacy policy](https://drummingbird1.github.io/nova-privacy/privacy.html) · [Releases](https://github.com/DrummingBird1/nova-privacy/releases) · [Support the project](#support)
 
+🗺️ [Roadmap](ROADMAP.md)
+
 🌐 **Read this in other languages:** [עברית](README.he.md)
 
 </div>
