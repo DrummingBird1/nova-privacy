@@ -25,11 +25,18 @@ This repository hosts the project's public-facing site (this README, the [landin
 
 ## Features
 
+**New in 3.1:**
+
+- 🌍 **Smart add in your language** — dates, priorities and repeats are understood in all **18 languages**, and the `!` and `@` shortcuts work in every one
+- 🖨️ **Print your day** — `Ctrl+P` (or "Print today's page" in the command palette) prints a clean black-and-white sheet with the daily focus, tasks (overdue, due today and undated), habits and calendar events. In guest mode or while Nova is locked, nothing personal is printed
+- 🖼️ **A background for each profile** — every saved profile remembers its own uploaded background image and brings it back when you switch
+- 🛠️ **Polish and fixes** — text on the automatic backgrounds now meets WCAG AA contrast, plus fixes to the calendar card, narrow task cards and more resilient data. No new permissions
+
 **New in 3.0:**
 
 - 🧩 **Dashboard builder** — switch to a **free grid** (a 12×8 canvas) and drag and resize every widget anywhere, with Alt+Arrow keys as a keyboard alternative. A visual **widget gallery** turns widgets on and off, the **theme studio** saves your look as a named theme you can share with a copyable code, and **background effects** (stars, particles, aurora, rain, snow, seasonal) plus adjustable glass add some life
 - 📋 **Productivity hub** — one click from the top bar: a **daily briefing**, a **weekly planner** (drag tasks between days), a **kanban board** with projects, **insights** (streaks, charts and a 12-week heatmap), a **journal** with daily prompts, and **goals** with steps and numeric tracking
-- 🧠 **Smart add, on your device** — type `call mom tomorrow urgent` and the date, priority, #tags and +projects are understood (English and Hebrew, no AI needed). If your Chrome has built-in AI, you can also polish the briefing, summarize notes and add tasks with AI. It all runs on your device, only after you explicitly download the model, and availability depends on your Chrome version and hardware
+- 🧠 **Smart add, on your device** — type `call mom tomorrow urgent` and the date, priority, #tags and +projects are understood (English and Hebrew in 3.0, all 18 languages since 3.1, no AI needed). If your Chrome has built-in AI, you can also polish the briefing, summarize notes and add tasks with AI. It all runs on your device, only after you explicitly download the model, and availability depends on your Chrome version and hardware
 - 💾 **Automatic folder backup** — pick a folder and Nova saves a daily backup file there and keeps the last seven (Chrome and Edge)
 - 🎉 **What's new & guided tour** — a short window after each update, and a five-step tour for new features
 

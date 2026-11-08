@@ -12,14 +12,13 @@ A high-level look at where Nova Homepage has been and where it may go. Ideas are
 | 2.0 | A larger feature release that rolled up the 1.4–1.7 work. |
 | 3.0 | Dashboard builder, productivity hub (tasks, habits, planner, insights), on-device smart features, and 18 interface languages. |
 | 3.0.1 | Bug-fix release: sync, layout, accessibility and reliability fixes. No new permissions. |
+| 3.1 | Smart add in all 18 languages, a print-friendly day sheet, a background image for each profile, and WCAG AA contrast for the automatic backgrounds. No new permissions. |
 
 ## Ideas being considered
 
-- Todo shortcut words for more languages.
-- Native-speaker review of translations.
+- Native-speaker review of the translations, especially the smart-add phrases in the 16 languages beyond English and Hebrew.
+- Merging edits from several open tabs item by item, so two simultaneous edits never overwrite each other.
 - Layout polish for small browser windows.
-- Per-profile background images.
-- A print-friendly day card.
 - A Firefox port.
 
 ## Not planned
