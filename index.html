@@ -1,266 +1,256 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Nova Homepage — a beautiful, private new-tab page</title>
-<meta name="description" content="Nova Homepage replaces your new-tab page with a personal, privacy-first dashboard: clock, weather, tasks, Pomodoro timer, smart search and more — all data stays on your device." />
-<meta property="og:title" content="Nova Homepage" />
-<meta property="og:description" content="A beautiful, private new-tab page for Chrome. No accounts, no tracking, no servers." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'" />
+<title>Nova Homepage: a beautiful, private new-tab page for Chrome</title>
+<meta name="description" content="Nova turns every new tab into a calm, private dashboard: clock, weather, tasks, habits, focus timer and smart search. Free, in 18 languages, with no accounts, no tracking and no servers." />
+<link rel="canonical" href="https://drummingbird1.github.io/nova-privacy/" />
+<link rel="alternate" hreflang="en" href="https://drummingbird1.github.io/nova-privacy/" />
+<link rel="alternate" hreflang="he" href="https://drummingbird1.github.io/nova-privacy/he/" />
+<link rel="alternate" hreflang="x-default" href="https://drummingbird1.github.io/nova-privacy/" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="apple-touch-icon" href="assets/icon-128.png" />
+<meta name="theme-color" content="#4a63e0" />
 <meta property="og:type" content="website" />
+<meta property="og:site_name" content="Nova Homepage" />
+<meta property="og:title" content="Nova Homepage: your new tab, reimagined" />
+<meta property="og:description" content="A calm, private dashboard for every new tab. Free, 18 languages, no accounts, no tracking, no servers." />
 <meta property="og:url" content="https://drummingbird1.github.io/nova-privacy/" />
-<style>
-  :root {
-    color-scheme: light dark;
-    --accent: #6c8cff;
-    --accent2: #ac5eff;
-    --text: #1a1d29;
-    --muted: #5b6172;
-    --border: #e5e7ee;
-    --bg: #ffffff;
-    --card: #f6f7fb;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --text: #eef0f6;
-      --muted: #a7acbd;
-      --border: #262a38;
-      --bg: #0f1117;
-      --card: #171a24;
-    }
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-  }
-  a { color: inherit; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding-inline: 24px; }
-
-  /* ---- nav ---- */
-  nav {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 0;
-  }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; text-decoration: none; }
-  .brand svg { width: 26px; height: 26px; }
-  .nav-links { display: flex; gap: 28px; font-size: 0.92rem; font-weight: 600; }
-  .nav-links a { text-decoration: none; color: var(--muted); }
-  .nav-links a:hover { color: var(--text); }
-
-  /* ---- hero ---- */
-  .hero { text-align: center; padding: 64px 0 56px; }
-  .hero .mark { width: 96px; height: 96px; margin: 0 auto 20px; }
-  .hero h1 {
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    margin: 0 0 14px;
-    letter-spacing: -0.02em;
-  }
-  .hero .grad-text {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .hero p.sub {
-    max-width: 560px; margin: 0 auto 32px;
-    color: var(--muted); font-size: 1.1rem;
-  }
-  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 13px 26px; border-radius: 999px; font-weight: 700; font-size: 0.95rem;
-    text-decoration: none; border: 1px solid transparent; cursor: default;
-  }
-  .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
-  .btn-ghost { border-color: var(--border); color: var(--text); }
-  .btn-ghost:hover { background: var(--card); }
-  .btn.patreon, .btn.kofi, .btn.buymeacoffee { color: #fff; cursor: pointer; }
-  .btn.patreon:hover, .btn.kofi:hover, .btn.buymeacoffee:hover { filter: brightness(1.08); }
-  .btn.patreon { background: #ff424d; }
-  .btn.kofi { background: #ff5e5b; }
-  .btn.buymeacoffee { background: #ffdd00; color: #15181f; }
-  .status-note { margin-top: 14px; font-size: 0.85rem; color: var(--muted); }
-
-  /* ---- preview card (CSS mockup, not a screenshot — stays accurate) ---- */
-  .preview {
-    margin: 48px auto 0; max-width: 760px;
-    border-radius: 20px; overflow: hidden;
-    background: linear-gradient(135deg, #3457d5 0%, #7b4de0 60%, #ac5eff 100%);
-    box-shadow: 0 30px 80px -20px rgba(90, 70, 200, 0.45);
-    aspect-ratio: 16/9.2; position: relative; padding: 26px;
-  }
-  .preview-topbar { display: flex; justify-content: space-between; }
-  .pill { background: rgba(255,255,255,.16); border-radius: 12px; padding: 10px 14px; color: #fff; font-size: 0.78rem; }
-  .pill b { display: block; font-size: 1.05rem; }
-  .preview-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; }
-  .preview-center .time { font-size: 2.6rem; font-weight: 700; letter-spacing: -1px; }
-  .preview-center .greet { font-size: 0.95rem; opacity: .92; margin-top: 4px; }
-  .preview-search { margin-top: 16px; background: rgba(255,255,255,.18); border-radius: 999px; width: min(70%, 320px); padding: 10px 16px; font-size: 0.8rem; color: rgba(255,255,255,.85); }
-  .preview-bottom { position: absolute; bottom: 26px; left: 26px; right: 26px; display: flex; justify-content: space-between; gap: 10px; }
-  .card-chip { background: rgba(255,255,255,.14); border-radius: 12px; padding: 10px 12px; color: #fff; font-size: 0.72rem; min-width: 90px; }
-
-  /* ---- features ---- */
-  .section { padding: 72px 0; }
-  .section h2 { font-size: 1.9rem; text-align: center; margin: 0 0 8px; }
-  .section .lead { text-align: center; color: var(--muted); max-width: 540px; margin: 0 auto 44px; }
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  @media (max-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
-  .feature {
-    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-    padding: 22px;
-  }
-  .feature .ico { font-size: 1.6rem; margin-bottom: 10px; }
-  .feature h3 { margin: 0 0 6px; font-size: 1rem; }
-  .feature p { margin: 0; color: var(--muted); font-size: 0.88rem; }
-
-  /* ---- privacy strip ---- */
-  .privacy-strip {
-    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
-    padding: 40px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
-  }
-  .privacy-strip .ico-big { font-size: 2.4rem; }
-  .privacy-strip h3 { margin: 0 0 6px; font-size: 1.2rem; }
-  .privacy-strip p { margin: 0; color: var(--muted); max-width: 520px; }
-  .privacy-strip .link-cta { margin-inline-start: auto; white-space: nowrap; }
-
-  /* ---- languages ---- */
-  .lang-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-  .lang-chip { background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; }
-
-  /* ---- support ---- */
-  .support { text-align: center; }
-
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 0; margin-top: 24px;
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-    color: var(--muted); font-size: 0.85rem;
-  }
-  footer a { text-decoration: none; font-weight: 600; color: var(--muted); }
-  footer a:hover { color: var(--text); }
-  .footer-links { display: flex; gap: 20px; }
-</style>
+<meta property="og:image" content="https://drummingbird1.github.io/nova-privacy/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="assets/site.css" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Nova Homepage","applicationCategory":"ProductivityApplication","operatingSystem":"Chrome","description":"A private new-tab dashboard for Chrome: clock, weather, tasks, habits, focus timer and smart search. No accounts, no tracking, no servers.","url":"https://drummingbird1.github.io/nova-privacy/","downloadUrl":"https://chromewebstore.google.com/detail/nova-%E2%80%94-my-homepage/imkkbleomhifdfgbnipinlbpmcemfbdp","inLanguage":["en","he","fr","es","de","ru","ar","pt","ja","ko","zh","hi","it","nl","pl","tr","th","vi"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<div class="wrap">
-  <nav>
-    <a class="brand" href="./">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="ng" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#6c8cff"/><stop offset="1" stop-color="#ac5eff"/>
-        </linearGradient></defs>
-        <rect width="100" height="100" rx="24" fill="url(#ng)"/>
-        <path d="M50 18 C50 38 62 50 82 50 C62 50 50 62 50 82 C50 62 38 50 18 50 C38 50 50 38 50 18 Z" fill="#fff"/>
-      </svg>
-      Nova Homepage
-    </a>
-    <div class="nav-links">
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="./"><img src="assets/icon-128.png" alt="" width="30" height="30" />Nova Homepage</a>
+    <nav class="nav-links" aria-label="Sections">
       <a href="#features">Features</a>
+      <a href="#try">Try it</a>
       <a href="#privacy">Privacy</a>
-      <a href="privacy.html">Full policy</a>
-      <a href="#support">Support</a>
+      <a href="#new">What's new</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-end">
+      <a class="lang-switch" href="he/" hreflang="he" lang="he">עברית</a>
+      <a class="btn btn-primary btn-sm" href="https://chromewebstore.google.com/detail/nova-%E2%80%94-my-homepage/imkkbleomhifdfgbnipinlbpmcemfbdp" rel="noopener">Add to Chrome</a>
     </div>
-  </nav>
+  </div>
+</header>
 
+<main id="main">
   <section class="hero">
-    <svg class="mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#6c8cff"/><stop offset="1" stop-color="#ac5eff"/>
-      </linearGradient></defs>
-      <path d="M50 10 C50 34 66 50 90 50 C66 50 50 66 50 90 C50 66 34 50 10 50 C34 50 50 34 50 10 Z" fill="url(#hg)"/>
-    </svg>
-    <h1>Your new tab,<br/><span class="grad-text">reimagined.</span></h1>
-    <p class="sub">Nova turns every new tab into a calm, personal dashboard — clock, weather, tasks, focus timer and smart search in one place. No accounts, no tracking, no servers. Just your data, on your device.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nova-%E2%80%94-my-homepage/imkkbleomhifdfgbnipinlbpmcemfbdp" rel="noopener">🧭 Get it on the Chrome Web Store</a>
-      <a class="btn patreon" href="#support">❤️ Support development</a>
-    </div>
-    <p class="status-note">Built by an independent developer, in active development — 18 languages and counting.</p>
+    <div class="wrap">
+      <span class="eyebrow">✨ Free Chrome extension · 18 languages</span>
+      <h1>Your new tab,<br /><span class="grad">reimagined.</span></h1>
+      <p class="sub">Nova turns every new tab into a calm, personal dashboard: clock, weather, tasks, habits, a focus timer and smart search in one place. No accounts, no tracking, no servers. Your data stays on your device.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nova-%E2%80%94-my-homepage/imkkbleomhifdfgbnipinlbpmcemfbdp" rel="noopener">Add to Chrome, it's free</a>
+        <a class="btn btn-ghost" href="#features">See what it can do</a>
+      </div>
+      <p class="fine">Built by an independent developer. Nova 3 is out now.</p>
 
-    <div class="preview" aria-hidden="true">
-      <div class="preview-topbar">
-        <div class="pill">☀️ <b>22°C</b> New York</div>
-        <div class="pill">₿ <b>$61,245</b> +2.3%</div>
-      </div>
-      <div class="preview-center">
-        <div class="time">15:32</div>
-        <div class="greet">Good afternoon, Alex</div>
-        <div class="preview-search">🔍 Search, calculate, or !yt for a shortcut…</div>
-      </div>
-      <div class="preview-bottom">
-        <div class="card-chip">✅ Tasks<br/>2/3 done</div>
-        <div class="card-chip">„The harder you work…”<br/>— Proverb</div>
-        <div class="card-chip">🔥 Habits<br/>Read · 5 day streak</div>
+      <figure class="frame" aria-label="Nova's new-tab dashboard">
+        <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="frame-tab">New Tab</span></div>
+        <img src="assets/shots/en/dashboard.webp" width="1280" height="800" alt="Nova dashboard with a large clock, a greeting, today's focus, a search bar, weather, world clocks, a task list and quick links over a starry blue background" />
+      </figure>
+
+      <div class="trust">
+        <span>🔒 No accounts, no tracking</span>
+        <span>💾 Data stays on your device</span>
+        <span>🌍 18 languages, full RTL</span>
+        <span>🆓 Free and ad-free</span>
       </div>
     </div>
   </section>
 
   <section class="section" id="features">
-    <h2>Everything a new tab should be</h2>
-    <p class="lead">Every widget is optional — build the page that fits your day.</p>
-    <div class="grid">
-      <div class="feature"><div class="ico">🕐</div><h3>Clock &amp; greeting</h3><p>A clean clock, date and a greeting that adapts to the time of day.</p></div>
-      <div class="feature"><div class="ico">🎯</div><h3>Daily focus</h3><p>One question every morning: what matters most today?</p></div>
-      <div class="feature"><div class="ico">🔍</div><h3>Smart search</h3><p>Google, Bing, DuckDuckGo, Brave and more, plus a built-in calculator, unit converter and !bang shortcuts.</p></div>
-      <div class="feature"><div class="ico">🌤️</div><h3>Live weather</h3><p>Current conditions and a 3-day forecast via Open-Meteo — no API key, no account.</p></div>
-      <div class="feature"><div class="ico">✅</div><h3>Tasks &amp; habits</h3><p>Priorities, due dates, and streak tracking for the habits you're building.</p></div>
-      <div class="feature"><div class="ico">🍅</div><h3>Pomodoro timer</h3><p>Configurable focus/break lengths, auto-start, background noise and desktop notifications.</p></div>
-      <div class="feature"><div class="ico">💹</div><h3>Crypto &amp; world clocks</h3><p>Live prices and multiple time zones at a glance, entirely optional.</p></div>
-      <div class="feature"><div class="ico">🎨</div><h3>Deep customization</h3><p>Themes, gradients, your own photo, blur &amp; dim controls, accent colors and fonts.</p></div>
-      <div class="feature"><div class="ico">🌍</div><h3>8 languages</h3><p>English, Hebrew, French, Spanish, German, Russian, Arabic and Portuguese — with full RTL support.</p></div>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Features</span>
+        <h2>Everything a new tab should be</h2>
+        <p>Every widget is optional. Build the page that fits your day.</p>
+      </div>
+      <div class="bento">
+        <article class="tile t-wide t-img">
+          <span class="ico" aria-hidden="true">🧩</span>
+          <h3>Build your own dashboard</h3>
+          <p>Switch to a free grid and drag, resize and arrange every widget on a 12×8 canvas. Save your look as a theme and share it with a short code.</p>
+          <img src="assets/shots/en/builder.webp" width="1280" height="800" loading="lazy" alt="Nova in edit mode: widgets with dashed outlines and resize handles, and a bar reading Drag widgets to rearrange" />
+        </article>
+        <article class="tile t-narrow t-accent">
+          <span class="ico" aria-hidden="true">🧠</span>
+          <h3>Smart add, in your language</h3>
+          <p>Type “call mom tomorrow urgent” and the date and priority are understood, in all 18 languages. It runs on your device, no AI needed.</p>
+          <p><a href="#try">Try it right here →</a></p>
+        </article>
+        <article class="tile t-half t-img">
+          <span class="ico" aria-hidden="true">📋</span>
+          <h3>A productivity hub</h3>
+          <p>A daily briefing, a weekly planner, a kanban board, insights with streaks and a 12-week heatmap, a journal, and goals with steps.</p>
+          <img src="assets/shots/en/planner.webp" width="1280" height="800" loading="lazy" alt="The productivity hub showing a weekly planner with tasks arranged across the days of the week" />
+        </article>
+        <article class="tile t-half t-img">
+          <span class="ico" aria-hidden="true">🧰</span>
+          <h3>Pick the widgets you need</h3>
+          <p>More than 20 widgets, from weather, tasks and habits to a Pomodoro timer, notes, world clocks and news. Turn each one on or off with a click.</p>
+          <img src="assets/shots/en/gallery.webp" width="1280" height="800" loading="lazy" alt="The widget gallery: tiles for weather, clock, greeting, daily focus, search, quote, tasks, links, Pomodoro, notes and more, each with an on or off switch" />
+        </article>
+        <article class="tile t-half t-img">
+          <span class="ico" aria-hidden="true">🎨</span>
+          <h3>Make it yours</h3>
+          <p>Ten themes, backgrounds that follow the time of day and the weather, animated effects, your own photo, custom fonts, accent colors, glass controls, compact and zen modes, high contrast and adjustable text size.</p>
+          <img src="assets/shots/en/settings.webp" width="1280" height="800" loading="lazy" alt="Settings, Appearance tab, on a light teal background: accent colors, theme studio, background effect and glass sliders" />
+        </article>
+        <article class="tile t-half t-img">
+          <span class="ico" aria-hidden="true">🖨️</span>
+          <h3>Print your day</h3>
+          <p>Press Ctrl+P for a clean black-and-white sheet of today's focus, tasks and habits. Nothing personal is printed in guest mode or when Nova is locked.</p>
+          <img src="assets/shots/en/print.webp" width="1280" height="800" loading="lazy" alt="A printed A4 sheet listing the daily focus, ten tasks and three habits" />
+        </article>
+      </div>
+      <div class="chips more-row" aria-label="More features">
+        <span class="chip">🕐 Clock &amp; greeting</span><span class="chip">🎯 Daily focus</span><span class="chip">🌤️ Live weather</span>
+        <span class="chip">✅ Tasks &amp; habits</span><span class="chip">🍅 Pomodoro, timer, stopwatch</span><span class="chip">📝 Notes with Markdown &amp; PIN</span>
+        <span class="chip">🔍 Search, calculator, conversions</span><span class="chip">⌨️ Command palette (Ctrl+K)</span><span class="chip">💾 Daily folder backup</span><span class="chip">🔗 Quick links</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="try">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Try it</span>
+        <h2>Write it the way you'd say it</h2>
+        <p>Type a task below, or pick a language. Dates, priorities, #tags and +projects are understood as you type.</p>
+      </div>
+      <div class="demo" id="demo" data-due="Due" data-high="High priority" data-none="Nothing detected yet. Try adding a day, or the word “urgent”.">
+        <label for="demoInput">New task</label>
+        <input id="demoInput" type="text" dir="auto" autocomplete="off" spellcheck="false" />
+        <div class="demo-out" aria-live="polite">
+          <span class="lbl">Nova understood</span>
+          <div class="demo-title" id="demoTitle"></div>
+          <div class="pills" id="demoPills"></div>
+        </div>
+        <div class="chips demo-langs" id="demoLangs" role="group" aria-label="Example in another language"></div>
+        <p class="demo-note">This is a simplified demo that runs in your browser and sends nothing anywhere. In the extension the parser also understands weekdays, “in 3 days” and recurring tasks, in every language.</p>
+      </div>
     </div>
   </section>
 
   <section class="section" id="privacy">
-    <div class="privacy-strip">
-      <div class="ico-big">🔒</div>
-      <div>
-        <h3>Everything stays on your device</h3>
-        <p>No servers, no accounts, no analytics, no tracking. Settings and data live in your browser's local storage — optionally synced through your own Google account, never through ours.</p>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Privacy</span>
+        <h2>Private by design</h2>
+        <p>Nova has no servers, no accounts and no analytics. Your tasks, notes and settings live in your own browser.</p>
       </div>
-      <a class="btn btn-ghost link-cta" href="privacy.html">Read the full policy →</a>
+      <div class="priv-grid">
+        <div class="tile"><span class="ico" aria-hidden="true">🏠</span><h3>Local first</h3><p>Everything is stored on your device. Sync is optional, off by default, and uses your own Google account.</p></div>
+        <div class="tile"><span class="ico" aria-hidden="true">🙅</span><h3>Nothing to collect</h3><p>No sign-up, no tracking, no ads. We have no access to your data, because it never reaches us.</p></div>
+        <div class="tile"><span class="ico" aria-hidden="true">🎛️</span><h3>You choose what connects</h3><p>Weather, crypto, stocks and news contact their services directly from your browser, and only when you turn them on.</p></div>
+      </div>
+      <div class="scroll-x">
+        <table class="perm">
+          <thead><tr><th scope="col">Permission</th><th scope="col">What Nova uses it for</th></tr></thead>
+          <tbody>
+            <tr><td><code>storage</code></td><td>Keeps your settings and data in your browser.</td></tr>
+            <tr><td><code>geolocation</code></td><td>Weather for where you are. You can type a city instead.</td></tr>
+            <tr><td><code>favicon</code></td><td>Shows site icons locally, with no outside request.</td></tr>
+            <tr><td><code>alarms</code></td><td>Local reminders: Pomodoro, and habits and tasks you set a time for.</td></tr>
+            <tr><td>Optional</td><td>Bookmarks, top sites, recently closed tabs, open-tab search and notifications, plus access to the crypto, currency, stocks and “on this day” services. Each one is requested only when you turn on its feature.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="more-row center"><a class="btn btn-ghost" href="privacy.html">Read the full privacy policy</a></p>
     </div>
   </section>
 
-  <section class="section">
-    <h2>Speaks your language</h2>
-    <p class="lead">The interface auto-detects your browser's language on first run.</p>
-    <div class="lang-row">
-      <span class="lang-chip">English</span>
-      <span class="lang-chip">עברית</span>
-      <span class="lang-chip">Français</span>
-      <span class="lang-chip">Español</span>
-      <span class="lang-chip">Deutsch</span>
-      <span class="lang-chip">Русский</span>
-      <span class="lang-chip">العربية</span>
-      <span class="lang-chip">Português</span>
+  <section class="section" id="languages">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Languages</span>
+        <h2>Speaks your language</h2>
+        <p>The interface follows your browser's language and supports right-to-left scripts out of the box.</p>
+      </div>
+      <div class="chips" lang="mul">
+        <span class="chip" lang="en">English</span><span class="chip" lang="he">עברית</span><span class="chip" lang="fr">Français</span><span class="chip" lang="es">Español</span>
+        <span class="chip" lang="de">Deutsch</span><span class="chip" lang="ru">Русский</span><span class="chip" lang="ar">العربية</span><span class="chip" lang="pt">Português</span>
+        <span class="chip" lang="ja">日本語</span><span class="chip" lang="ko">한국어</span><span class="chip" lang="zh">中文</span><span class="chip" lang="hi">हिन्दी</span>
+        <span class="chip" lang="it">Italiano</span><span class="chip" lang="nl">Nederlands</span><span class="chip" lang="pl">Polski</span><span class="chip" lang="tr">Türkçe</span>
+        <span class="chip" lang="th">ไทย</span><span class="chip" lang="vi">Tiếng Việt</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="new">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">What's new</span>
+        <h2>Nova 3.1</h2>
+        <p>The latest update, with no new permissions.</p>
+      </div>
+      <div class="new-list">
+        <div class="new-item"><span class="ico" aria-hidden="true">🌍</span><div><h3>Smart add in your language</h3><p>Dates, priorities and repeats are understood in all 18 languages, and the ! and @ shortcuts work in every one.</p></div></div>
+        <div class="new-item"><span class="ico" aria-hidden="true">🖨️</span><div><h3>Print your day</h3><p>A clean sheet of today's tasks, habits and events with Ctrl+P, in A4 or Letter, left-to-right or right-to-left.</p></div></div>
+        <div class="new-item"><span class="ico" aria-hidden="true">🖼️</span><div><h3>A background for each profile</h3><p>Each saved profile remembers its own uploaded background image and brings it back when you switch.</p></div></div>
+        <div class="new-item"><span class="ico" aria-hidden="true">🛠️</span><div><h3>Polish and fixes</h3><p>Text on the automatic backgrounds now meets WCAG AA contrast, plus fixes to the calendar card, narrow task cards and more resilient data.</p></div></div>
+      </div>
+      <p class="more-row center"><a href="https://github.com/DrummingBird1/nova-privacy/releases">Release notes for every version →</a></p>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq">
+    <div class="narrow">
+      <div class="section-head">
+        <span class="kicker">FAQ</span>
+        <h2>Questions, answered</h2>
+      </div>
+      <details><summary>Is Nova really free?</summary><p>Yes. It's free and ad-free, built independently, and supported by voluntary donations from people who like it.</p></details>
+      <details><summary>What data does Nova collect?</summary><p>None. There are no accounts, no analytics and no servers. Your data stays in your browser. The only network requests are to services for features you turn on, such as weather, and they go straight from your browser to the service.</p></details>
+      <details><summary>Does it work offline?</summary><p>The clock, tasks, habits, notes and most widgets work without a connection. Live widgets such as weather, crypto and news need the internet to refresh.</p></details>
+      <details><summary>Which browsers does it support?</summary><p>Nova is built and tested for Chrome and is installed from the Chrome Web Store. The folder backup works in Chrome and Edge, and the optional on-device AI features depend on Chrome's built-in AI.</p></details>
+      <details><summary>How do I back up or move my data?</summary><p>In Settings you can export everything to a file (optionally protected with a password), turn on a daily automatic backup to a folder you choose, or copy a transfer code to another device. Settings can also sync through your own Google account.</p></details>
+      <details><summary>Where do I report a bug or suggest an idea?</summary><p>Open an issue in the <a href="https://github.com/DrummingBird1/nova-privacy/issues">project's GitHub repository</a>. Ideas and translation fixes are welcome.</p></details>
     </div>
   </section>
 
   <section class="section support" id="support">
-    <h2>Support the project</h2>
-    <p class="lead">Nova is free, ad-free and built independently. If it earns a spot on your new tab, consider backing its development.</p>
-    <div class="cta-row">
-      <a class="btn patreon" href="https://www.patreon.com/c/IdanLights">❤️ Become a patron</a>
-      <a class="btn kofi" href="https://ko-fi.com/idanlights">☕ Support on Ko-fi</a>
-      <a class="btn buymeacoffee" href="https://buymeacoffee.com/MrIdan">☕ Buy me a coffee</a>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Support</span>
+        <h2>Support the project</h2>
+        <p>Nova is free, ad-free and built independently. If it earns a spot on your new tab, consider backing its development.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn patreon" href="https://www.patreon.com/c/IdanLights" rel="noopener">❤️ Become a patron</a>
+        <a class="btn kofi" href="https://ko-fi.com/idanlights" rel="noopener">☕ Support on Ko-fi</a>
+        <a class="btn bmc" href="https://buymeacoffee.com/MrIdan" rel="noopener">☕ Buy me a coffee</a>
+      </div>
     </div>
   </section>
+</main>
 
-  <footer>
+<footer class="footer">
+  <div class="wrap footer-in">
     <div>© 2026 Nova. All data stays on your device.</div>
-    <div class="footer-links">
+    <nav class="footer-links" aria-label="Footer">
       <a href="privacy.html">Privacy policy</a>
+      <a href="https://github.com/DrummingBird1/nova-privacy/releases">Releases</a>
+      <a href="https://github.com/DrummingBird1/nova-privacy/blob/main/ROADMAP.md">Roadmap</a>
       <a href="https://github.com/DrummingBird1/nova-privacy/issues">Contact</a>
-      <a href="#support">Support</a>
-    </div>
-  </footer>
-</div>
-
+    </nav>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
 </body>
 </html>
