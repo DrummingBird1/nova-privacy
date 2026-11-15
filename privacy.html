@@ -49,8 +49,18 @@
     <li><strong>Automatic folder backup</strong> (optional, new in 3.0) — you pick a folder in the browser's folder picker. Nova saves one file per day, <code>nova-backup-YYYY-MM-DD.json</code>, keeps the latest 7, and does not touch any other file. <strong>These files are not encrypted</strong> and contain your data (tasks, notes, journal, settings), so choose a private folder. If that folder is synced by a cloud service you use (Google Drive, Dropbox, …), that service uploads it; Nova itself uploads nothing. The folder reference is kept in the browser (IndexedDB). Chrome may ask you to allow access again after a restart. You can stop the backup at any time in Settings, and the extension forgets the folder.</li>
   </ul>
 
-  <h2>On-device AI (optional, new in 3.0)</h2>
+  <h2>AI (optional): on your device by default, in the cloud only if you choose (3.2)</h2>
+  <h3>On-device (default)</h3>
   <p>Nova can use Chrome's built-in AI (the Prompt API and the Summarizer) to polish the daily briefing, summarize a note and add a task from free text. These models run <strong>on your device, inside Chrome</strong>. The text you process (the task you typed, the note, or the briefing built from your tasks and events) goes only to your own browser — <strong>not to a Nova server and not to any other server on our behalf</strong>. Nova does not download a model by itself: Chrome does, only after you explicitly click a download button in Settings, and that download is governed by Google's and Chrome's own policies. You can turn these features off in Settings. The "smart add" (detecting dates and priorities in text) is plain local code with no AI.</p>
+
+  <h3>Cloud engine with your own API key (optional, new in 3.2)</h3>
+  <p>In the <strong>AI</strong> tab of Settings you can instead choose a cloud provider: <strong>Claude (Anthropic)</strong>, <strong>OpenAI</strong> or <strong>Google Gemini</strong>. This is off by default and only works after you have done every step yourself: chosen a provider, ticked an explicit consent box, allowed Chrome's site-access prompt for that provider, and pasted <strong>your own</strong> API key.</p>
+  <ul>
+    <li><strong>What is sent:</strong> only the text you asked to process with that click (the task sentence for ✨, a note's text for summarize / improve / extract tasks, or the daily-briefing draft), plus the model name you chose. It goes <strong>directly from your browser to the provider</strong>, under your own account and the provider's terms and privacy policy. It does not pass through a Nova server (there is none) and is not sent to us.</li>
+    <li><strong>What is not sent:</strong> nothing in the background and nothing without a click. No task, note or setting you did not ask to process.</li>
+    <li><strong>Your key:</strong> stored only in this browser, in a separate local storage entry. It is not part of your settings, so it is not synced between devices and is not included in manual or folder backups, transfer codes or profiles. "Remove key and revoke access", and resetting the settings, delete it and revoke the site permission. Your consent choice is per device and is not synced.</li>
+    <li>You can switch back to on-device AI, turn AI off, or turn off each use (adding tasks, notes, briefing) at any time.</li>
+  </ul>
 
   <h2>Network requests</h2>
   <p>The extension only contacts external services <strong>when needed, for features you've turned on</strong>:</p>
@@ -84,10 +94,16 @@
         <td><a href="https://www.frankfurter.app/">frankfurter.app</a></td>
       </tr>
       <tr>
-        <td>Stooq</td>
+        <td>Yahoo Finance (<code>query1.finance.yahoo.com</code>)</td>
         <td>Only if the stocks widget is enabled</td>
         <td>The ticker symbols you entered</td>
-        <td><a href="https://stooq.com/">stooq.com</a></td>
+        <td><a href="https://legal.yahoo.com/us/en/yahoo/privacy/index.html">legal.yahoo.com</a></td>
+      </tr>
+      <tr>
+        <td>Anthropic / OpenAI / Google (Gemini)</td>
+        <td>Only if you chose a cloud AI engine in Settings, entered your own key and pressed an AI action</td>
+        <td>The text you asked to process and the model name</td>
+        <td><a href="https://www.anthropic.com/privacy">anthropic.com</a> · <a href="https://openai.com/policies/privacy-policy">openai.com</a> · <a href="https://policies.google.com/privacy">policies.google.com</a></td>
       </tr>
       <tr>
         <td>Wikipedia (<code>en.wikipedia.org</code>)</td>
@@ -131,7 +147,7 @@
     <li><code>sessions</code> — show recently closed tabs (read locally only).</li>
     <li><code>tabs</code> — search across your open tabs: titles and addresses are read locally to show matches and to switch to the tab you pick.</li>
     <li><code>notifications</code> — system notifications for a finished Pomodoro and for the reminders you set.</li>
-    <li>Access to <code>api.coingecko.com</code>, <code>api.frankfurter.app</code>, <code>stooq.com</code> and <code>en.wikipedia.org</code> — requested only when you turn on the matching feature in the table above.</li>
+    <li>Access to <code>api.coingecko.com</code>, <code>api.frankfurter.app</code>, <code>query1.finance.yahoo.com</code> and <code>en.wikipedia.org</code>, and, only for a cloud AI engine, <code>api.anthropic.com</code>, <code>api.openai.com</code> and <code>generativelanguage.googleapis.com</code> — requested only when you turn on the matching feature in the table above.</li>
   </ul>
   <p>Data read from <code>topSites</code>/<code>bookmarks</code>/<code>sessions</code>/<code>tabs</code> is <strong>never transmitted anywhere</strong> — it is used only to display it on the page.</p>
 
